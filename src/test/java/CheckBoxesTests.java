@@ -35,6 +35,14 @@ public class CheckBoxesTests {
         assertFalse(checkbox2.isSelected());
     }
 
+    public void sleep(){
+        try{
+            Thread.sleep(3000);
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
+    }
+
     @AfterMethod
     public void afterTest(){
         driver.close();

@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -141,6 +142,40 @@ public class WebElementsTests {
 
         sleep();
     }
+
+    @Test
+    public void checkIfElementsOnPageTest(){
+        WebElement usernameField = driver.findElement(By.id("username"));
+        WebElement passwordField = driver.findElement(By.id("password"));
+        WebElement emailLabel = driver.findElement(By.cssSelector("span[class='help-block']"));
+
+        System.out.println("Is usernameField displayed: " + usernameField.isDisplayed());
+        System.out.println("Is usernameField enabled: " + usernameField.isEnabled());
+
+        System.out.println("Is passwordField displayed: " + passwordField.isDisplayed());
+        System.out.println("Is passwordField enabled: " + passwordField.isEnabled());
+
+        System.out.println("Is emailLabel displayed: " + emailLabel.isDisplayed());
+        System.out.println("Is emailLabel enabled: " + emailLabel.isEnabled());
+
+        assertTrue(usernameField.isDisplayed());
+        assertTrue(passwordField.isDisplayed());
+        assertTrue(emailLabel.isDisplayed());
+
+        assertTrue(usernameField.isDisplayed());
+        assertTrue(passwordField.isDisplayed());
+    }
+
+    @Test
+    public void mouseMoveTest(){
+        WebElement smileIcon = driver.findElement(By.id("smiley"));
+        WebElement smileIcon2 = driver.findElement(By.id("smiley2"));
+
+        Actions actions = new Actions(driver);
+
+        actions.moveToElement(smileIcon).moveToElement(smileIcon2).build().perform();
+    }
+
 
 
     public void sleep(){

@@ -6,6 +6,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
+
 import static org.testng.Assert.*;
 
 public class HoverTests {
@@ -25,7 +28,7 @@ public class HoverTests {
         Actions action = new Actions(driver);
         action.moveToElement(photo1).perform();
         sleep();
-
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         WebElement firstPhotoCapture = driver.findElement(By.xpath("//div[1]/div/h5"));
         assertEquals(firstPhotoCapture.getText(), "name: user1");
         sleep();

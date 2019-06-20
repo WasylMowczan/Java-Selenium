@@ -1,17 +1,18 @@
+package Selenium_Basic_Tests;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
+import javax.naming.SizeLimitExceededException;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
-public class HoverTests {
+public class FileUploadTest {
 
     private WebDriver driver;
 
@@ -19,26 +20,28 @@ public class HoverTests {
     public void beforeTest(){
         System.setProperty("webdriver.chrome.driver","C:/bin/chromedriver.exe");
         driver = new ChromeDriver();
-        driver.navigate().to("http://theinternet.przyklady.javastart.pl/hovers");
+        driver.navigate().to("http://theinternet.przyklady.javastart.pl/upload");
     }
 
     @Test
-    public void hoverTest(){
-        WebElement photo1 = driver.findElement(By.xpath("//*[@id='content']/div/div[1]"));
-        Actions action = new Actions(driver);
-        action.moveToElement(photo1).perform();
+    public void fileUploadTest(){
+        WebElement uploadPicker = driver.findElement(By.id("file-upload"));
+        uploadPicker.sendKeys("C:/setup.log");
         sleep();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        WebElement firstPhotoCapture = driver.findElement(By.xpath("//div[1]/div/h5"));
-        assertEquals(firstPhotoCapture.getText(), "name: user1");
+
+        WebElement uploadButton = driver.findElement(By.id("file-submit"));
+        uploadButton.click();
+        sleep();
+        WebElement uploadedFileName = driver.findElement(By.id("uploaded-files"));
+        String fileName = uploadedFileName.getText();
+        assertEquals(fileName, "setup.log");
         sleep();
     }
 
     public void sleep(){
         try{
             Thread.sleep(3000);
-        }catch (InterruptedException e)
-        {
+        }catch(InterruptedException e){
             e.printStackTrace();
         }
     }

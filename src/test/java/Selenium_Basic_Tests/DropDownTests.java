@@ -1,3 +1,5 @@
+package Selenium_Basic_Tests;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;

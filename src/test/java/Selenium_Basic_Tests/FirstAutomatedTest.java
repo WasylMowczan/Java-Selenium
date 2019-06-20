@@ -1,3 +1,6 @@
+package Selenium_Basic_Tests;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -6,7 +9,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class SecondAutomatedTest {
+public class FirstAutomatedTest {
 
     private WebDriver driver;
 
@@ -16,13 +19,17 @@ public class SecondAutomatedTest {
         driver = new ChromeDriver();
     }
 
-
     @Test
-    public void mySecondTest(){
-        driver.navigate().to("https//www.seleniumhq.org/");
+    public void myFirstTest(){
+        driver.navigate().to("https://google.pl");
+
+        driver.findElement(By.name("q")).sendKeys("JavaStart");
+        driver.findElement(By.name("q")).submit();
         String pageTitle = driver.getTitle();
-        assertTrue(pageTitle.equals("Selenium - Web Browser Automation"));
+
+        assertTrue(pageTitle.contains("JavaStart"));
     }
+
 
     @AfterMethod
     public void afterTest(){
@@ -30,3 +37,18 @@ public class SecondAutomatedTest {
         driver.quit();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

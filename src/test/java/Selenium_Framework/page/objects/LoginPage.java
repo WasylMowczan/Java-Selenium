@@ -16,8 +16,11 @@ public class LoginPage {
     @FindBy(name = "signon")
     private WebElement signOnButton;
 
-    @FindBy(css = "#Content ul[class='message' li]")
+    @FindBy(css = "#Content ul[class='messages'] li")
     private WebElement messageLabel;
+
+    @FindBy(css = "area[alt='Fish']")
+    private WebElement btnFishImage;
 
     private WebDriver driver;
 
@@ -26,7 +29,7 @@ public class LoginPage {
         PageFactory.initElements(driver,this);
     }
 
-    public void typrIntoUsernameField(String username){
+    public void typeIntoUsernameField(String username){
         usernameField.clear();
         usernameField.sendKeys(username);
     }
@@ -43,5 +46,9 @@ public class LoginPage {
     public String getWarningMessage(){
         String warningText = messageLabel.getText();
         return warningText;
+    }
+
+    public void clickOnFishImageButton(){
+        btnFishImage.click();
     }
 }

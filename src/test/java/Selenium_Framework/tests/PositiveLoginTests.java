@@ -20,7 +20,7 @@ public class PositiveLoginTests extends TestBase {
         topMenuPage.clickOnSignInLink();
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.typrIntoUsernameField("j2ee");
+        loginPage.typeIntoUsernameField("j2ee");
         loginPage.typeIntoPasswordField("j2ee");
         loginPage.clickOnLoginButton();
         FooterPage footerPage = new FooterPage(driver);

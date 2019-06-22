@@ -14,14 +14,15 @@ public class TestBase {
     @BeforeMethod
     public void beforeTest(){
         System.setProperty("webdriver.chromedriver.driver","C:/bin/chromedriver.exe");
-        driver = new ChromeDriver();
+
+        driver = DriverManager.getWebDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
         driver.navigate().to("http://przyklady.javastart.pl/jpetstore/");
     }
 
     @AfterMethod
     public void afterTest(){
-        driver.close();
-        driver.quit();
+        DriverManager.disposeDriver();
     }
 }

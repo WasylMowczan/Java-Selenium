@@ -21,7 +21,7 @@ public class FailedLoginTest extends TestBase{
         topMenuPage.clickOnSignInLink();
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.typrIntoUsernameField("NotExistingLogin");
+        loginPage.typeIntoUsernameField("NotExistingLogin");
         loginPage.typeIntoPasswordField("NotProperPassword");
         loginPage.clickOnLoginButton();
         String warningMessage = loginPage.getWarningMessage();

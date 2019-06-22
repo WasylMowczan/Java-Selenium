@@ -1,5 +1,7 @@
 package Selenium_Framework.page.objects;
 
+import Selenium_Framework.driver.manager.DriverManager;
+import Selenium_Framework.waits.WaitForElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,12 +26,12 @@ public class LoginPage {
 
     private WebDriver driver;
 
-    public LoginPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver,this);
+    public LoginPage(){
+        PageFactory.initElements(DriverManager.getWebDriver(),this);
     }
 
     public void typeIntoUsernameField(String username){
+        WaitForElement.waitUntilElementIsVisible(usernameField);
         usernameField.clear();
         usernameField.sendKeys(username);
     }
@@ -44,6 +46,7 @@ public class LoginPage {
     }
 
     public String getWarningMessage(){
+        WaitForElement.waitUntilElementIsVisible(messageLabel);
         String warningText = messageLabel.getText();
         return warningText;
     }
@@ -51,4 +54,5 @@ public class LoginPage {
     public void clickOnFishImageButton(){
         btnFishImage.click();
     }
+
 }

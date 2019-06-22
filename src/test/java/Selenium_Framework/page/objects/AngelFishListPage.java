@@ -1,5 +1,6 @@
 package Selenium_Framework.page.objects;
 
+import Selenium_Framework.driver.manager.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,12 +13,13 @@ public class AngelFishListPage {
     @FindBy(css = "a.Button[href$='EST-2']")
     private WebElement smallAngelFishAddToCartButton;
 
-    public AngelFishListPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public AngelFishListPage(){
+
+        PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
     public void clickOnAddToCartSmallAngelFish(){
+
         smallAngelFishAddToCartButton.click();
     }
 }

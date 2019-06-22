@@ -1,5 +1,7 @@
 package Selenium_Framework.page.objects;
 
+import Selenium_Framework.driver.manager.DriverManager;
+import Selenium_Framework.waits.WaitForElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,12 +14,12 @@ public class FooterPage {
 
     private WebDriver driver;
 
-    public FooterPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public FooterPage(){
+        PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
     public boolean isBannerAfterLoginDisplayed(){
+        WaitForElement.waitUntilElementIsVisible(bannerAfterLohinPage);
         boolean isDisplayed = bannerAfterLohinPage.isDisplayed();
         return isDisplayed;
     }

@@ -1,5 +1,6 @@
 package Selenium_Framework.page.objects;
 
+import Selenium_Framework.driver.manager.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,9 +13,8 @@ public class FishListPage {
 
     private WebDriver driver;
 
-    public FishListPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver,this);
+    public FishListPage(){
+        PageFactory.initElements(DriverManager.getWebDriver(),this);
     }
 
     public void clickOnAngilFish(){

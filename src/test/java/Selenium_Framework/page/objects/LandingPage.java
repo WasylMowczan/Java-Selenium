@@ -16,16 +16,16 @@ public class LandingPage {
     @FindBy(css = "#Content a")
     private WebElement enterStoreLink;
 
-
     private WebDriver driver;
 
     public LandingPage(){
         PageFactory.initElements(DriverManager.getWebDriver(),this);
     }
 
-    public void clickOnEnterStoreLink(){
+    public TopMenuPage clickOnEnterStoreLink(){
         WaitForElement.waitUntilElementClickable(enterStoreLink);
         enterStoreLink.click();
         logger.info("Clicked on Enter Store Link");
+        return new TopMenuPage();
     }
 }

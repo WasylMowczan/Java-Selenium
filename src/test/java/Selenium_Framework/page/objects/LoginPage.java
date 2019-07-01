@@ -34,21 +34,25 @@ public class LoginPage {
         PageFactory.initElements(DriverManager.getWebDriver(),this);
     }
 
-    public void typeIntoUsernameField(String username){
+    public LoginPage typeIntoUsernameField(String username){
         WaitForElement.waitUntilElementIsVisible(usernameField);
         usernameField.clear();
         usernameField.sendKeys(username);
         logger.info("Typed into User Name field {}",username);
+        return this;
     }
 
-    public void typeIntoPasswordField(String password){
+    public LoginPage typeIntoPasswordField(String password){
         passwordField.clear();
         passwordField.sendKeys(password);
         logger.info("Typed into Password field {}",password);
+        return this;
     }
 
-    public void clickOnLoginButton(){
+    public FooterPage clickOnLoginButton(){
         signOnButton.click();
+        logger.info("Clicked on Login Button");
+        return new FooterPage();
     }
 
     public String getWarningMessage(){
@@ -58,9 +62,10 @@ public class LoginPage {
         return warningText;
     }
 
-    public void clickOnFishImageButton(){
+    public AngelFishListPage clickOnFishImageButton(){
         btnFishImage.click();
         logger.info("Clicked on Login Button");
+        return new AngelFishListPage();
     }
 
 }

@@ -5,6 +5,8 @@ import Selenium_Framework.driver.manager.DriverUtils;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import static Selenium_Framework.navigation.ApplicationURLs.APPLICATION_URL;
+
 public class TestBase {
 
 
@@ -14,7 +16,7 @@ public class TestBase {
 
         DriverManager.getWebDriver();
         DriverUtils.setInitialConfiguration();
-        DriverUtils.navigateToPage("http://przyklady.javastart.pl/jpetstore/");
+        DriverUtils.navigateToPage(APPLICATION_URL);
     }
 
     @AfterMethod

@@ -1,9 +1,7 @@
 package Selenium_Framework.tests;
 
 import Selenium_Framework.driver.manager.DriverUtils;
-import Selenium_Framework.page.objects.LandingPage;
 import Selenium_Framework.page.objects.LoginPage;
-import Selenium_Framework.page.objects.TopMenuPage;
 import org.testng.annotations.Test;
 
 import static Selenium_Framework.navigation.ApplicationURLs.LOGIN_URL;

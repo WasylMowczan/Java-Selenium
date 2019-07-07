@@ -2,6 +2,7 @@ package Selenium_Framework.page.objects;
 
 import Selenium_Framework.driver.manager.DriverManager;
 import Selenium_Framework.waits.WaitForElement;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -22,6 +23,7 @@ public class TopMenuPage {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
+    @Step("Click on Sign In Link")
     public LoginPage clickOnSignInLink(){
         WaitForElement.waitUntilElementClickable(signOnLink);
         signOnLink.click();

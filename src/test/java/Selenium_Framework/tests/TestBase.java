@@ -2,11 +2,10 @@ package Selenium_Framework.tests;
 
 import Selenium_Framework.configuration.ConfigurationProperties;
 import Selenium_Framework.configuration.PropertiesLoader;
+import Selenium_Framework.driver.BrowserType;
 import Selenium_Framework.driver.manager.DriverManager;
 import Selenium_Framework.driver.manager.DriverUtils;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 
 import java.util.Properties;
 
@@ -21,10 +20,10 @@ public class TestBase {
         ConfigurationProperties.setProperties(propertiesFromFile);
     }
 
+    @Parameters("browser")
     @BeforeMethod
-    public void beforeTest(){
-        System.setProperty("webdriver.chromedriver.driver","C:/bin/chromedriver.exe");
-
+    public void beforeTest(@Optional BrowserType browserType){
+        DriverManager.setWebDriver(browserType);
         DriverManager.getWebDriver();
         DriverUtils.setInitialConfiguration();
         DriverUtils.navigateToPage(APPLICATION_URL);

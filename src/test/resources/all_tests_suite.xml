@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="ALL Pet Store Tests">
+<suite name="ALL Pet Store Tests" parallel="tests" thread-count="2">
     <test name="Negative Login Tests">
+        <parameter name="browser" value="CHROME"></parameter>
         <classes>
-            <class name="test.Selenium_Framework.tests.FailedLoginTest"/>
+            <class name="Selenium_Framework.tests.FailedLoginTest"/>
         </classes>
     </test>
 
     <test name="Positive Login Tests">
+        <parameter name="browser" value="CHROME"></parameter>
         <classes>
-            <class name="test.Selenium_Framework.tests.PositiveLoginTests"/>
+            <class name="Selenium_Framework.tests.PositiveLoginTests"/>
         </classes>
     </test>
 </suite>

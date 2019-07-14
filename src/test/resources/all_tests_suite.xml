@@ -4,6 +4,7 @@
     
     <listeners>
         <listener class-name="Selenium_Framework.utils.testng.listeners.TestListener"></listener>
+        <listener class-name="Selenium_Framework.utils.testng.listeners.AnnotationTransformer"></listener>
     </listeners>
     
     <test name="Negative Login Tests">

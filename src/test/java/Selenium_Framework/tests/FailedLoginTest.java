@@ -2,6 +2,7 @@ package Selenium_Framework.tests;
 
 import Selenium_Framework.driver.manager.DriverUtils;
 import Selenium_Framework.page.objects.LoginPage;
+import Selenium_Framework.utils.testng.listeners.RetryAnalyzer;
 import io.qameta.allure.*;
 import org.testng.annotations.Test;
 
@@ -12,7 +13,7 @@ public class FailedLoginTest extends TestBase{
     @Issue("DEFECT-1")
     @TmsLink("ID-1")
     @Severity(SeverityLevel.NORMAL)
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     @Description("The goal of the test is to log in using not proper username and password" +
     "and check if warning message Invalid username or password is displayed")
     public void asUserTryToLoginWithIncorrectLoginAndPassword(){

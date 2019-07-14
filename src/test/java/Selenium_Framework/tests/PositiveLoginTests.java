@@ -9,7 +9,6 @@ import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
 
 import static Selenium_Framework.navigation.ApplicationURLs.LOGIN_URL;
-import static org.testng.Assert.assertTrue;
 
 public class PositiveLoginTests extends TestBase {
 
@@ -22,7 +21,7 @@ public class PositiveLoginTests extends TestBase {
         DriverUtils.navigateToPage(LOGIN_URL);
         LoginPage loginPage = new LoginPage();
         loginPage
-                .typeIntoUsernameField("j2e")
+                .typeIntoUsernameField("j2ee")
                 .typeIntoPasswordField("j2ee")
                 .clickOnLoginButton()
                 .assertThatDogBannerIsDisplayed();

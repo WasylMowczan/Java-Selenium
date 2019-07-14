@@ -21,13 +21,10 @@ public class PositiveLoginTests extends TestBase {
     public void asUserLoginUsingValidLoginAndPassword(){
         DriverUtils.navigateToPage(LOGIN_URL);
         LoginPage loginPage = new LoginPage();
-        boolean isBannerAfterLoginDisplayed = loginPage
-                .typeIntoUsernameField("j2ee")
+        loginPage
+                .typeIntoUsernameField("j2e")
                 .typeIntoPasswordField("j2ee")
                 .clickOnLoginButton()
-                .isBannerAfterLoginDisplayed();
-
-        assertTrue(isBannerAfterLoginDisplayed);
+                .assertThatDogBannerIsDisplayed();
     }
-
 }

@@ -5,10 +5,7 @@ import Selenium_Framework.page.objects.LoginPage;
 import io.qameta.allure.*;
 import org.testng.annotations.Test;
 
-import javax.management.DescriptorKey;
-
 import static Selenium_Framework.navigation.ApplicationURLs.LOGIN_URL;
-import static org.testng.AssertJUnit.assertEquals;
 
 public class FailedLoginTest extends TestBase{
 
@@ -28,9 +25,7 @@ public class FailedLoginTest extends TestBase{
                 .typeIntoUsernameField("NotExistingLogin")
                 .typeIntoPasswordField("NotProperPassword")
                 .clickOnLoginButton();
-        String warningMessage = loginPage.getWarningMessage();
-
-        assertEquals(warningMessage, "Invalid username or password. Signon failed.");
-
+        loginPage
+                .assertThatWarningIsDisplayed("Invalid username or password. Signon failed.");
     }
 }

@@ -9,23 +9,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static Selenium_Framework.generic.assertions.AssertWebElement.assertThat;
+
 public class FooterPage {
 
     private Logger logger = LogManager.getLogger(FooterPage.class);
 
     @FindBy(css = "#Banner img[src*='dog']")
-    private WebElement bannerAfterLohinPage;
+    private WebElement bannerAfterLohinLogo;
 
     public FooterPage(){
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
-    @Step("Getting is dog banner is displayed")
-    public boolean isBannerAfterLoginDisplayed(){
-        WaitForElement.waitUntilElementIsVisible(bannerAfterLohinPage);
-        boolean isDisplayed = bannerAfterLohinPage.isDisplayed();
-        logger.info("Returning status of banner after login: {}", isDisplayed);
-        return isDisplayed;
+    @Step("Assert that element dog banner is displayed")
+    public FooterPage assertThatDogBannerIsDisplayed(){
+        logger.info("Checking if dog banner is displayed");
+        WaitForElement.waitUntilElementIsVisible(bannerAfterLohinLogo);
+        assertThat(bannerAfterLohinLogo).isDisplayed();
+        return this;
     }
 
 }

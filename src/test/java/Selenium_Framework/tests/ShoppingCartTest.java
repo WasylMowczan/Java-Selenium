@@ -25,8 +25,8 @@ public class ShoppingCartTest extends TestBase {
         shoppingCartPage.clickOnProceedToCheckOut();
 
         loginPage = new LoginPage();
-        String warningMessage = loginPage.getWarningMessage();
-        assertEquals(warningMessage, "You must sign on before attempting to check out. Please sign on and try checking out again.");
+        loginPage.assertThatWarningIsDisplayed("You must sign on before attempting to check out. Please sign on and try checking out again.");
+
     }
 
 }

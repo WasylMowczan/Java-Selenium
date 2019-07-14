@@ -2,6 +2,7 @@ package Selenium_Framework.driver.manager;
 
 import Selenium_Framework.driver.BrowserFactory;
 import Selenium_Framework.driver.BrowserType;
+import Selenium_Framework.driver.listeners.WebDriverEventListenerRegistrar;
 import org.openqa.selenium.WebDriver;
 
 import static Selenium_Framework.configuration.TestRunProperties.getBrowserToRun;
@@ -16,28 +17,20 @@ public class DriverManager {
     //Metoda służy od ustawiania typu przeglądarki dla danego wątku
     public static void setWebDriver(BrowserType browserType) {
 
-        //Obiekt typu WebDriver, który w kolejnych liniach zostanie zainicjalizowany wywołaniem metody getBrowser() z klasy BrowserFactory
-        WebDriver browser = null;
+            WebDriver browser = null;
 
-        //Jeśli obiekt browserType będzie nullem, wtedy dla danego wątku zostanie wybrana przeglądarka zdefiniowana
-        // w pliku configuration.properties
-        if (browserType == null) {
+            if (browserType == null) {
+                browserType = getBrowserToRun();
+                browser = new BrowserFactory(browserType, getIsRemoteRun()).getBrowser();
+            } else {
+                browser = new BrowserFactory(browserType, getIsRemoteRun()).getBrowser();
+            }
 
-            //Utworzenie instancji WebDrivera dla opcji gdy browserType jest nullem
-            //Zostanie wtedy wybrana przeglądarka zdefiniowana w pliku configuration.properties
-            browserType = getBrowserToRun();
-            browser = new BrowserFactory(browserType, getIsRemoteRun()).getBrowser();
-        } else {
-            //Utworzenie instancji WebDrivera dla opcji gdy browserType nie jest nullem
-            //To znaczy, że został on zdefiniowany w pliku TestNG XML i możemy go używać
-            browser = new BrowserFactory(browserType, getIsRemoteRun()).getBrowser();
-        }
+            //Rejestracja obiektu WebDrivera
+            browser = WebDriverEventListenerRegistrar.registerWebDriverEventListener(browser);
 
-        //Dodanie do puli instancji ThreadLocal za pomocą metody set() instancji klasy BrowserType
-        browserTypeThreadLocal.set(browserType);
-
-        //Dodanie do puli instancji ThreadLocal za pomocą metody set() instancji klasy WebDriver
-        webDriverThreadLocal.set(browser);
+            browserTypeThreadLocal.set(browserType);
+            webDriverThreadLocal.set(browser);
     }
 
     public static WebDriver getWebDriver() {

@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
-    private Logger logger = LogManager.getRootLogger();
+    private Logger logger = LogManager.getLogger(LoginPage.class);
 
     @FindBy(name = "username")
     private WebElement usernameField;

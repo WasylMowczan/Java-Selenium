@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TopMenuPage {
 
-    private Logger logger = LogManager.getRootLogger();
+    private Logger logger = LogManager.getLogger(TopMenuPage.class);
 
     @FindBy(css = "#MenuContent a[href*='signonForm']")
     private WebElement signOnLink;

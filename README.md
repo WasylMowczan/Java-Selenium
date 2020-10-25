@@ -1,7 +1,7 @@
 # Java-based Selenium framework
 
 This is simple selenium test framework for web testing. 
-This framework is based on course from javastart.pl.
+This framework is based on course from [javastart.pl](https://javastart.pl/).
 
 
 ### Tech

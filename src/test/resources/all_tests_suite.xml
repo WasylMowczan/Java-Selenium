@@ -3,21 +3,21 @@
 <suite name="ALL Pet Store Tests" parallel="tests" thread-count="2">
     
     <listeners>
-        <listener class-name="Selenium_Framework.utils.testng.listeners.TestListener"></listener>
-        <listener class-name="Selenium_Framework.utils.testng.listeners.AnnotationTransformer"></listener>
+        <listener class-name="com.wasylmowczan.SeleniumFramework.utils.testng.listeners.TestListener"></listener>
+        <listener class-name="com.wasylmowczan.SeleniumFramework.utils.testng.listeners.AnnotationTransformer"></listener>
     </listeners>
     
     <test name="Negative Login Tests">
         <parameter name="browser" value="CHROME"></parameter>
         <classes>
-            <class name="Selenium_Framework.tests.FailedLoginTest"/>
+            <class name="com.wasylmowczan.SeleniumFramework.tests.FailedLoginTest"/>
         </classes>
     </test>
 
     <test name="Positive Login Tests">
         <parameter name="browser" value="CHROME"></parameter>
         <classes>
-            <class name="Selenium_Framework.tests.PositiveLoginTests"/>
+            <class name="com.wasylmowczan.SeleniumFramework.tests.PositiveLoginTests"/>
         </classes>
     </test>
 </suite>
